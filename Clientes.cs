@@ -25,3 +25,20 @@ public Cliente(int dni, string apellido, string nombre, DateTime fi, int te, int
     TotalAbonado=ta;
 }
 }
+
+
+/*
+        switch(te){
+        case 1:
+            tAbonado=15000;
+            break;
+        case 2:
+            tAbonado=30000;
+            break;
+        case 3:
+            tAbonado=10000;
+            break;
+        case 4:
+            tAbonado=40000;
+            break;
+        }*/

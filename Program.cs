@@ -1,9 +1,10 @@
-﻿menu();
+﻿Console.Clear();
+menu();
 
 
 
 void menu(){
-    Console.WriteLine("1. agregar | 2. | 3.buscarCliente | 4. cambiarEntrada | 5. Salir");
+    Console.WriteLine("1. agregar | 2.Ver estadísticas | 3.buscarCliente | 4. cambiarEntrada | 5. Salir");
     int opcion = int.Parse(Console.ReadLine());
     while (opcion < 1 || opcion > 5){
         Console.WriteLine("Sos tontis, no sabes leer las opciones");
@@ -15,6 +16,8 @@ void menu(){
             menu();
             break;
         case 2:
+            estadisticasTiquetera();
+            menu();
             break;
         case 3:
             buscarCliente();
@@ -54,7 +57,7 @@ void nuevaInscripcion(){
     Console.WriteLine("Elija el tipo de entrada que quiera tener: 1= Día 1 - valor a abonar $15000, 2= Día 2 - valor a abonar $30000, 3= Día 3 - valor a abonar $10000, 4= full pass - valor a abonar $40000");
     te = ingresarEntero("Ingrese la opción:");
     while (te < 1 || te > 5){
-        Console.WriteLine("Sos idiota, no sabes leer las opciones");
+        Console.WriteLine("Error, volvé a intentarlo");
         te = int.Parse(Console.ReadLine());
     }
     switch(te){
@@ -72,7 +75,7 @@ void nuevaInscripcion(){
             break;
     }
     Cliente nuevoCliente = new Cliente(dni, apellido, nombre, DateTime.Today, te, tAbonado); 
-    Tiquetera.AgregarCliente(nuevoCliente);
+    int ultimoId = Tiquetera.AgregarCliente(nuevoCliente);
     // Se crea tu objeto
     // Pedis datos del cliente - DNI, apellido, nombre, tipo de entrada.
     // Creas el cliente
@@ -125,4 +128,11 @@ void cambiarEntradaACliente(){
         Console.WriteLine("No se pudo hacer el cambio");
     }
 
+}
+
+void estadisticasTiquetera(){
+    List<string> estadisticas = Tiquetera.estadisticasTiquetera();
+    foreach (string esta in estadisticas){
+        Console.WriteLine(esta);
+    }
 }
